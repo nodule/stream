@@ -1,0 +1,8 @@
+title: Sink
+description: Sink demonstration
+
+Sink(stream/sink)
+Read(fs/createReadStream)
+Log(console/log)
+
+'./package.json' -> file Read stream -> stream Sink out -> msg Log(console/log)

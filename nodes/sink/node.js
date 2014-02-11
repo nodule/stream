@@ -1,6 +1,6 @@
 output = function(cb) {
 
-  var sink = new Sink(input.stream);
+  var sink = new pipette.Sink(input.stream);
   sink.on('data', function(data) {
     cb({ out: data });
   });
