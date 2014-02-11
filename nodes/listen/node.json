@@ -1,0 +1,27 @@
+{
+  "name": "listen",
+  "ns": "stream",
+  "description": "Listens for stream data.",
+  "phrases": {
+    "active": "Listening to stream"
+  },
+  "ports": {
+    "input": {
+      "stream": {
+        "title": "Stream",
+        "type": "Stream",
+        "required": true
+      }
+    },
+    "output": {
+      "error": {
+        "title": "Error",
+        "type": "object"
+      },
+      "out": {
+        "title": "Buffer",
+        "type": "Buffer"
+      }
+    }
+  }
+}

@@ -25,6 +25,34 @@
             "type": "object"
           },
           "out": {
+            "title": "Buffer",
+            "type": "Buffer"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Listening to stream"
+      },
+      "description": "Listens for stream data.",
+      "ns": "stream",
+      "name": "listen",
+      "fn": "output = function(cb) {\n  input.stream.on('data', function(data) {\n    cb({ out: data });\n  });\n\n  input.stream.on('error', function(err) {\n    cb({ error: err });\n  });\n};\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "stream": {
+            "title": "Stream",
+            "type": "Stream",
+            "required": true
+          }
+        },
+        "output": {
+          "error": {
+            "title": "Error",
+            "type": "object"
+          },
+          "out": {
             "title": "String",
             "type": "string"
           }
@@ -39,7 +67,7 @@
       "description": "Accepts a stream and converts it back into a string.",
       "ns": "stream",
       "name": "sink",
-      "fn": "output = function(cb) {\n\n  var sink = new Sink(input.stream);\n  sink.on('data', function(data) {\n    cb({ out: data });\n  });\n\n  sink.on('error', function(err) {\n    cb({ error: err });\n  });\n};\n"
+      "fn": "output = function(cb) {\n\n  var sink = new pipette.Sink(input.stream);\n  sink.on('data', function(data) {\n    cb({ out: data.toString() });\n  });\n\n  sink.on('error', function(err) {\n    cb({ error: err });\n  });\n};\n"
     }
   ],
   "twigs": []
