@@ -1,0 +1,7 @@
+title: Stdin Test
+description: Testing stdin
+
+StdIn(stream/stdin)
+Log(console/log)
+
+'' -> :start StdIn stream -> msg Log(console/log)

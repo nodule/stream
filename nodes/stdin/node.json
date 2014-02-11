@@ -12,6 +12,11 @@
         "title": "Stream",
         "type": "Stream",
         "required": true
+      },
+      "encoding": {
+        "title": "Encoding",
+        "type": "string",
+        "default": "utf-8"
       }
     },
     "output": {
