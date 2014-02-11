@@ -1,0 +1,26 @@
+{
+  "name": "inflate",
+  "ns": "stream",
+  "description": "Inflate pipe",
+  "phrases": {
+    "active": "Inflating..."
+  },
+  "require": {
+    "zlib": "internal"
+  },
+  "ports": {
+    "input": {
+      "stream": {
+        "title": "Stream",
+        "type": "Stream",
+        "required": true
+      }
+    },
+    "output": {
+      "stream": {
+        "title": "Stream",
+        "type": "Stream"
+      }
+    }
+  }
+}

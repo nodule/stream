@@ -1,0 +1,26 @@
+{
+  "name": "gunzip",
+  "ns": "stream",
+  "description": "Gunzip pipe",
+  "phrases": {
+    "active": "Gunzipping..."
+  },
+  "require": {
+    "zlib": "internal"
+  },
+  "ports": {
+    "input": {
+      "stream": {
+        "title": "Stream",
+        "type": "Stream",
+        "required": true
+      }
+    },
+    "output": {
+      "stream": {
+        "title": "Stream",
+        "type": "Stream"
+      }
+    }
+  }
+}

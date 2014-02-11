@@ -1,0 +1,26 @@
+{
+  "name": "deflate",
+  "ns": "stream",
+  "description": "Deflate pipe",
+  "phrases": {
+    "active": "Deflating..."
+  },
+  "require": {
+    "zlib": "internal"
+  },
+  "ports": {
+    "input": {
+      "stream": {
+        "title": "Stream",
+        "type": "Stream",
+        "required": true
+      }
+    },
+    "output": {
+      "stream": {
+        "title": "Stream",
+        "type": "Stream"
+      }
+    }
+  }
+}

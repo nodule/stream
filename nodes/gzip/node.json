@@ -1,0 +1,26 @@
+{
+  "name": "gzip",
+  "ns": "stream",
+  "description": "Gzip pipe",
+  "phrases": {
+    "active": "Gzipping..."
+  },
+  "require": {
+    "zlib": "internal"
+  },
+  "ports": {
+    "input": {
+      "stream": {
+        "title": "Stream",
+        "type": "Stream",
+        "required": true
+      }
+    },
+    "output": {
+      "stream": {
+        "title": "Stream",
+        "type": "Stream"
+      }
+    }
+  }
+}
