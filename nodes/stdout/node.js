@@ -1,1 +1,1 @@
-process.stdout.write(input.stream);
+process.stdout.write(input.buffer);

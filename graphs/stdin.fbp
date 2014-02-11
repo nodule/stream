@@ -3,5 +3,6 @@ description: Testing stdin
 
 StdIn(stream/stdin)
 StdOut(stream/stdout)
+OnData(stream/onData)
 
-'' -> :start StdIn stream -> stream StdOut
+'' -> :start StdIn stream -> stream OnData buffer -> buffer StdOut

@@ -8,9 +8,9 @@
   "expose": ["process"],
   "ports": {
     "input": {
-      "stream": {
-        "title": "Stream",
-        "type": "Stream"
+      "buffer": {
+        "title": "Buffer",
+        "type": "Buffer"
       }
     },
     "output": {
