@@ -1,0 +1,30 @@
+{
+  "name": "sink",
+  "ns": "stream",
+  "description": "Accepts a stream and converts it back into a string.",
+  "phrases": {
+    "active": "Sinking in"
+  },
+  "require": {
+    "pipette": "0.x.x"
+  },
+  "ports": {
+    "input": {
+      "stream": {
+        "title": "Stream",
+        "type": "Stream",
+        "required": true
+      }
+    },
+    "output": {
+      "error": {
+        "title": "Error",
+        "type": "object"
+      },
+      "out": {
+        "title": "String",
+        "type": "string"
+      }
+    }
+  }
+}

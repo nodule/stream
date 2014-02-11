@@ -1,0 +1,46 @@
+{
+  "name": "stream",
+  "description": "Streams for Chiχ",
+  "version": "0.0.2",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nodule/stream.git"
+  },
+  "dependencies": {
+    "pipette": "0.x.x"
+  },
+  "nodes": [
+    {
+      "ports": {
+        "input": {
+          "stream": {
+            "title": "Stream",
+            "type": "Stream",
+            "required": true
+          }
+        },
+        "output": {
+          "error": {
+            "title": "Error",
+            "type": "object"
+          },
+          "out": {
+            "title": "String",
+            "type": "string"
+          }
+        }
+      },
+      "require": {
+        "pipette": "0.x.x"
+      },
+      "phrases": {
+        "active": "Sinking in"
+      },
+      "description": "Accepts a stream and converts it back into a string.",
+      "ns": "stream",
+      "name": "sink",
+      "fn": "output = function(cb) {\n\n  var sink = new Sink(input.stream);\n  sink.on('data', function(data) {\n    cb({ out: data });\n  });\n\n  sink.on('error', function(err) {\n    cb({ error: err });\n  });\n};\n"
+    }
+  ],
+  "twigs": []
+}
