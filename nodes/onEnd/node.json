@@ -1,0 +1,23 @@
+{
+  "name": "onEnd",
+  "ns": "stream",
+  "description": "On End",
+  "phrases": {
+    "active": "Stream is ending..."
+  },
+  "ports": {
+    "input": {
+      "stream": {
+        "title": "Stream",
+        "type": "Stream",
+        "required": true
+      }
+    },
+    "output": {
+      "buffer": {
+        "title": "Buffer",
+        "type": "Buffer"
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "onData",
+  "ns": "stream",
+  "description": "On Data",
+  "phrases": {
+    "active": "Doing on data..."
+  },
+  "ports": {
+    "input": {
+      "stream": {
+        "title": "Stream",
+        "type": "Stream",
+        "required": true
+      }
+    },
+    "output": {
+      "buffer": {
+        "title": "Buffer",
+        "type": "Buffer"
+      }
+    }
+  }
+}

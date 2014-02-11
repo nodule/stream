@@ -2,6 +2,6 @@ title: Stdin Test
 description: Testing stdin
 
 StdIn(stream/stdin)
-Log(console/log)
+StdOut(stream/stdout)
 
-'' -> :start StdIn stream -> msg Log(console/log)
+'' -> :start StdIn stream -> stream StdOut
