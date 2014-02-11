@@ -8,11 +8,6 @@
   "expose": ["process"],
   "ports": {
     "input": {
-      "stream": {
-        "title": "Stream",
-        "type": "Stream",
-        "required": true
-      },
       "encoding": {
         "title": "Encoding",
         "type": "string",
