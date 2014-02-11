@@ -7,3 +7,5 @@ Read(fs/createReadStream)
 Log(console/log)
 
 './package.json' -> file Read stream -> stream Listen stream -> stream Sink out -> msg Log(console/log)
+
+Listen out -> msg Log
