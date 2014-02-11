@@ -1,0 +1,21 @@
+title: Test for stream
+description: Test for stream
+
+Sink(stream/sink)
+Read(fs/createReadStream)
+Log(console/log)
+
+
+'Yes' -> @msg Yes(console/log)
+'No'  -> @msg  No(console/log)
+
+'Stream' -> kind IsStream(object/is)
+'Lake'   -> kind IsLake(object/is)
+
+'./package.json' -> file Read
+
+Read stream -> in IsStream
+Read stream -> in IsLake
+
+IsStream yes -> :start Yes
+IsLake    no -> :start No
