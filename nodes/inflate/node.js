@@ -1,1 +1,1 @@
-output = input.stream.pipe(zlib.createInflate());
+output.stream = input.stream.pipe(zlib.createInflate());

@@ -1,0 +1,24 @@
+{
+  "name": "stdin",
+  "ns": "stream",
+  "description": "Read for stdin",
+  "phrases": {
+    "active": "Reading stdin..."
+  },
+  "expose": ["process"],
+  "ports": {
+    "input": {
+      "stream": {
+        "title": "Stream",
+        "type": "Stream",
+        "required": true
+      }
+    },
+    "output": {
+      "stream": {
+        "title": "Stream",
+        "type": "Stream"
+      }
+    }
+  }
+}

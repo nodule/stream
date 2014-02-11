@@ -1,1 +1,1 @@
-output = input.stream.pipe(zlib.createUnzip());
+output.stream = input.stream.pipe(zlib.createUnzip());

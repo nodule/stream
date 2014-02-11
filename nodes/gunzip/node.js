@@ -1,1 +1,1 @@
-output = input.stream.pipe(zlib.createGunzip());
+output.stream = input.stream.pipe(zlib.createGunzip());

@@ -1,1 +1,1 @@
-output = input.stream.pipe(zlib.createDeflate());
+output.stream = input.stream.pipe(zlib.createDeflate());
