@@ -1,10 +1,9 @@
 title: Stdin Test
 description: Testing stdin
 
-provider ../nodes/{name}
 
 StdIn(stream/stdin)
 StdOut(stream/stdout)
 OnData(stream/onData)
 
-'' -> :start StdIn stream -> stream OnData buffer -> in StdOut
+'' -> :start StdIn stream -> stream OnData out -> in StdOut

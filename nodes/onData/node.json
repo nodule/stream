@@ -14,9 +14,9 @@
       }
     },
     "output": {
-      "buffer": {
-        "title": "Buffer",
-        "type": "Buffer"
+      "out": {
+        "title": "Output",
+        "type": "any"
       }
     }
   }
