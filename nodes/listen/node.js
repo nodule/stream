@@ -1,4 +1,7 @@
 output = function(cb) {
+
+  cb( { stream: input.stream } );
+
   input.stream.on('data', function(data) {
     cb({ out: data });
   });

@@ -20,6 +20,10 @@
           }
         },
         "output": {
+          "stream": {
+            "title": "Stream",
+            "type": "Stream"
+          },
           "error": {
             "title": "Error",
             "type": "object"
@@ -36,7 +40,7 @@
       "description": "Listens for stream data.",
       "ns": "stream",
       "name": "listen",
-      "fn": "output = function(cb) {\n  input.stream.on('data', function(data) {\n    cb({ out: data });\n  });\n\n  input.stream.on('error', function(err) {\n    cb({ error: err });\n  });\n};\n"
+      "fn": "output = function(cb) {\n\n  cb( { stream: input.stream } );\n\n  input.stream.on('data', function(data) {\n    cb({ out: data });\n  });\n\n  input.stream.on('error', function(err) {\n    cb({ error: err });\n  });\n};\n"
     },
     {
       "ports": {
