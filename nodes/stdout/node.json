@@ -2,6 +2,7 @@
   "name": "stdout",
   "ns": "stream",
   "description": "Write for stdin",
+  "async": true,
   "phrases": {
     "active": "Writing to stdout..."
   },

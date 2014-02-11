@@ -1,1 +1,3 @@
-process.stdout.write(input.buffer);
+on.input.in = function() {
+  process.stdout.write(data);
+};
