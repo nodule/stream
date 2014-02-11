@@ -16,8 +16,7 @@
     "test": "chit -r"
   },
   "dependencies": {
-    "pipette": "0.x.x",
-    "instance-of": "1.x.x"
+    "pipette": "0.x.x"
   },
   "devDependencies": {
     "chit": "0.x.x"
