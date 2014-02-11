@@ -35,7 +35,7 @@
       "description": "Deflate pipe",
       "ns": "stream",
       "name": "deflate",
-      "fn": "output = input.stream.pipe(zlib.createDeflate());\n"
+      "fn": "output.stream = input.stream.pipe(zlib.createDeflate());\n"
     },
     {
       "ports": {
@@ -62,7 +62,7 @@
       "description": "Gunzip pipe",
       "ns": "stream",
       "name": "gunzip",
-      "fn": "output = input.stream.pipe(zlib.createGunzip());\n"
+      "fn": "output.stream = input.stream.pipe(zlib.createGunzip());\n"
     },
     {
       "ports": {
@@ -89,7 +89,7 @@
       "description": "Gzip pipe",
       "ns": "stream",
       "name": "gzip",
-      "fn": "output = input.stream.pipe(zlib.createGzip());\n"
+      "fn": "output.stream = input.stream.pipe(zlib.createGzip());\n"
     },
     {
       "ports": {
@@ -116,7 +116,7 @@
       "description": "Inflate pipe",
       "ns": "stream",
       "name": "inflate",
-      "fn": "output = input.stream.pipe(zlib.createInflate());\n"
+      "fn": "output.stream = input.stream.pipe(zlib.createInflate());\n"
     },
     {
       "ports": {
@@ -197,6 +197,33 @@
           }
         }
       },
+      "expose": [
+        "process"
+      ],
+      "phrases": {
+        "active": "Reading stdin..."
+      },
+      "description": "Read for stdin",
+      "ns": "stream",
+      "name": "stdin",
+      "fn": "// test\nprocess.stdin.resume();\nprocess.stdin.setEncoding(input.encoding);\noutput.stream = process.stdin;\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "stream": {
+            "title": "Stream",
+            "type": "Stream",
+            "required": true
+          }
+        },
+        "output": {
+          "stream": {
+            "title": "Stream",
+            "type": "Stream"
+          }
+        }
+      },
       "require": {
         "zlib": "internal"
       },
@@ -206,7 +233,7 @@
       "description": "Unzip pipe",
       "ns": "stream",
       "name": "unzip",
-      "fn": "output = input.stream.pipe(zlib.createUnzip());\n"
+      "fn": "output.stream = input.stream.pipe(zlib.createUnzip());\n"
     }
   ],
   "twigs": []
