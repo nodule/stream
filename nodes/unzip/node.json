@@ -6,7 +6,7 @@
     "active": "Unzipping..."
   },
   "require": {
-    "zlib": "internal"
+    "zlib": "builtin"
   },
   "ports": {
     "input": {

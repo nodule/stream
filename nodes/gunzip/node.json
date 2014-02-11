@@ -6,7 +6,7 @@
     "active": "Gunzipping..."
   },
   "require": {
-    "zlib": "internal"
+    "zlib": "builtin"
   },
   "ports": {
     "input": {
