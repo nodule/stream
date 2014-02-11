@@ -1,0 +1,19 @@
+{
+  "name": "stdout",
+  "ns": "stream",
+  "description": "Write for stdin",
+  "phrases": {
+    "active": "Writing to stdout..."
+  },
+  "expose": ["process"],
+  "ports": {
+    "input": {
+      "stream": {
+        "title": "Stream",
+        "type": "Stream"
+      }
+    },
+    "output": {
+    }
+  }
+}
