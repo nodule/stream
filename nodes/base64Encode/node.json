@@ -1,0 +1,26 @@
+{
+  "name": "base64Encode",
+  "ns": "stream",
+  "description": "Base64 encode stream",
+  "phrases": {
+    "active": "Encoding to base64..."
+  },
+  "require": {
+    "base64-stream": "0.x.x"
+  },
+  "ports": {
+    "input": {
+      "stream": {
+        "title": "Stream",
+        "type": "Stream",
+        "required": true
+      }
+    },
+    "output": {
+      "stream": {
+        "title": "Stream",
+        "type": "Stream"
+      }
+    }
+  }
+}

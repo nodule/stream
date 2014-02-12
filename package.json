@@ -16,7 +16,8 @@
     "test": "chit -r"
   },
   "dependencies": {
-    "pipette": "0.x.x"
+    "pipette": "0.x.x",
+    "base64-stream": "~0.1.2"
   },
   "devDependencies": {
     "chit": "0.x.x"

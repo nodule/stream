@@ -18,7 +18,7 @@ Append(string/append)
 './graphs/base64.png' -> file ReadStream stream -> ^stream OnData out -> in StdOut
 
 # will fail, will delete the other stream
-'./graphs/base64.png' -> file ReadStream
+#'./graphs/base64.png' -> file ReadStream
 
 'Done' -> @msg Done(console/log)
 
