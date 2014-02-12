@@ -4,6 +4,7 @@ description: Testing stdin
 
 StdIn(stream/stdin)
 StdOut(stream/stdout)
+Gzip(stream/gzip)
 OnData(stream/onData)
 
-'' -> :start StdIn stream -> stream OnData out -> in StdOut
+'' -> :start StdIn stream -> ^stream Gzip stream -> ^stream OnData out -> in StdOut
