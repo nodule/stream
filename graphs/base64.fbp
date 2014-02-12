@@ -1,6 +1,5 @@
-title: .pngs to base64
-description: Testing streaming of multiple files.
-
+title: Encode .pngs to base64
+description: Not really tested yet.
 
 StdIn(stream/stdin)
 StdOut(stream/stdout)
@@ -9,13 +8,13 @@ OnData(stream/onData)
 ReadStream(fs/createReadStream)
 OnData(stream/onData)
 OnEnd(stream/onEnd)
-Append(string/append)
+B64E(stream/base64Encode)
 
 # Ok, this works as an example, but does not support sending multiple files.
 # That autogrouping would be nice now, new onData just hmm
 # how to know when onData is finished? onEnd maybe... :p duh.
 # or hm, maybe it does ? No the stream will get overwritten.
-'./graphs/base64.png' -> file ReadStream stream -> ^stream OnData out -> in StdOut
+'./graphs/base64.png' -> file ReadStream stream -> ^stream B64E stream -> stream OnData out -> in StdOut
 
 # will fail, will delete the other stream
 #'./graphs/base64.png' -> file ReadStream
@@ -23,5 +22,5 @@ Append(string/append)
 'Done' -> @msg Done(console/log)
 
 ReadStream stream -> ^stream OnEnd
-OnEnd :complete -> :start Done
+OnEnd out -> :start Done
 # onEnd out
