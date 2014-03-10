@@ -227,7 +227,7 @@
       "description": "On Data",
       "ns": "stream",
       "name": "onData",
-      "fn": "output = function(cb) {\n  // just an anonymous group now\n  // can just be collect with >=\n  // TODO: sometimes the grouping behavior is wanted\n  // sometimes not, we do not want to group an\n  // ongoing stream..\n  var g = chi.group();\n\n  input.stream.on('data', function(chunk) {\n\n    cb({\n      out: chunk\n    }, g.item());\n\n  });\n\n  input.stream.on('end', function(chunk) {\n\n    if(chunk) {// not sure if needed\n      cb({ out: chunk }, g.item());\n    }\n\n    g.done();\n    done(); // triggers complete.\n  }\n};\n"
+      "fn": "output = function(cb) {\n  // just an anonymous group now\n  // can just be collect with >=\n  // TODO: sometimes the grouping behavior is wanted\n  // sometimes not, we do not want to group an\n  // ongoing stream..\n  var g = chi.group();\n\n  input.stream.on('data', function(chunk) {\n\n    cb({\n      out: chunk\n    }, g.item());\n\n  });\n\n  input.stream.on('end', function(chunk) {\n\n    if(chunk) {// not sure if needed\n      cb({ out: chunk }, g.item());\n    }\n\n    g.done();\n    done(); // triggers complete.\n  });\n};\n"
     },
     {
       "ports": {

@@ -22,5 +22,5 @@ output = function(cb) {
 
     g.done();
     done(); // triggers complete.
-  }
+  });
 };
