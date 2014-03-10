@@ -7,7 +7,8 @@
     "url": "https://github.com/nodule/stream.git"
   },
   "dependencies": {
-    "pipette": "0.x.x"
+    "pipette": "0.x.x",
+    "base64-stream": "~0.1.2"
   },
   "nodes": [
     {
@@ -27,7 +28,61 @@
         }
       },
       "require": {
-        "zlib": "internal"
+        "base64-stream": "0.x.x"
+      },
+      "phrases": {
+        "active": "Decoding base64..."
+      },
+      "description": "Base64 decode stream",
+      "ns": "stream",
+      "name": "base64Decode",
+      "fn": "output.stream = input.stream.pipe(base64_stream.encode());\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "stream": {
+            "title": "Stream",
+            "type": "Stream",
+            "required": true
+          }
+        },
+        "output": {
+          "stream": {
+            "title": "Stream",
+            "type": "Stream"
+          }
+        }
+      },
+      "require": {
+        "base64-stream": "0.x.x"
+      },
+      "phrases": {
+        "active": "Encoding to base64..."
+      },
+      "description": "Base64 encode stream",
+      "ns": "stream",
+      "name": "base64Encode",
+      "fn": "output.stream = input.stream.pipe(base64_stream.encode());\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "stream": {
+            "title": "Stream",
+            "type": "Stream",
+            "required": true
+          }
+        },
+        "output": {
+          "stream": {
+            "title": "Stream",
+            "type": "Stream"
+          }
+        }
+      },
+      "require": {
+        "zlib": "builtin"
       },
       "phrases": {
         "active": "Deflating..."
@@ -54,7 +109,7 @@
         }
       },
       "require": {
-        "zlib": "internal"
+        "zlib": "builtin"
       },
       "phrases": {
         "active": "Gunzipping..."
@@ -81,7 +136,7 @@
         }
       },
       "require": {
-        "zlib": "internal"
+        "zlib": "builtin"
       },
       "phrases": {
         "active": "Gzipping..."
@@ -108,7 +163,7 @@
         }
       },
       "require": {
-        "zlib": "internal"
+        "zlib": "builtin"
       },
       "phrases": {
         "active": "Inflating..."
@@ -160,6 +215,54 @@
           }
         },
         "output": {
+          "out": {
+            "title": "Output",
+            "type": "any"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Doing on data..."
+      },
+      "description": "On Data",
+      "ns": "stream",
+      "name": "onData",
+      "fn": "output = function(cb) {\n  // just an anonymous group now\n  // can just be collect with >=\n  var g = chi.group();\n  input.stream.on('data', function(chunk) {\n    cb({\n      out: chunk\n    }, g.item());\n  });\n\n  input.stream.on('end', function(chunk) {\n    if(chunk) {// not sure if needed\n      cb({ out: chunk }, g.item());\n    }\n    g.done();\n    done(); // triggers complete.\n  }\n};\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "stream": {
+            "title": "Stream",
+            "type": "Stream",
+            "required": true
+          }
+        },
+        "output": {
+          "out": {
+            "title": "Output",
+            "type": "any"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Stream is ending..."
+      },
+      "description": "On End",
+      "ns": "stream",
+      "name": "onEnd",
+      "fn": "output = function(cb) {\n  input.stream.on('end', function(chunk) {\n\n    cb({ out: chunk } );\n\n    done();\n\n  });\n};\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "stream": {
+            "title": "Stream",
+            "type": "Stream",
+            "required": true
+          }
+        },
+        "output": {
           "error": {
             "title": "Error",
             "type": "object"
@@ -184,10 +287,10 @@
     {
       "ports": {
         "input": {
-          "stream": {
-            "title": "Stream",
-            "type": "Stream",
-            "required": true
+          "encoding": {
+            "title": "Encoding",
+            "type": "string",
+            "default": "utf-8"
           }
         },
         "output": {
@@ -211,6 +314,28 @@
     {
       "ports": {
         "input": {
+          "in": {
+            "title": "Input",
+            "type": "any"
+          }
+        },
+        "output": {}
+      },
+      "expose": [
+        "process"
+      ],
+      "phrases": {
+        "active": "Writing to stdout..."
+      },
+      "async": true,
+      "description": "Write for stdin",
+      "ns": "stream",
+      "name": "stdout",
+      "fn": "on.input.in = function() {\n  process.stdout.write(data);\n};\n"
+    },
+    {
+      "ports": {
+        "input": {
           "stream": {
             "title": "Stream",
             "type": "Stream",
@@ -225,7 +350,7 @@
         }
       },
       "require": {
-        "zlib": "internal"
+        "zlib": "builtin"
       },
       "phrases": {
         "active": "Unzipping..."
