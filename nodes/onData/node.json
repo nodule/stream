@@ -5,6 +5,9 @@
   "phrases": {
     "active": "Doing on data..."
   },
+  "expose": [
+    "chi"
+  ],
   "ports": {
     "input": {
       "stream": {

@@ -221,6 +221,9 @@
           }
         }
       },
+      "expose": [
+        "chi"
+      ],
       "phrases": {
         "active": "Doing on data..."
       },
