@@ -290,6 +290,28 @@
     {
       "ports": {
         "input": {
+          "in": {
+            "title": "Input",
+            "type": "any"
+          }
+        },
+        "output": {}
+      },
+      "expose": [
+        "process"
+      ],
+      "phrases": {
+        "active": "Writing to stderr"
+      },
+      "async": true,
+      "description": "Write for stderr",
+      "ns": "stream",
+      "name": "stderr",
+      "fn": "on.input.in = function() {\n  process.stderr.write(data);\n};\n"
+    },
+    {
+      "ports": {
+        "input": {
           "encoding": {
             "title": "Encoding",
             "type": "string",
