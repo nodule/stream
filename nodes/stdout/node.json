@@ -6,7 +6,9 @@
   "phrases": {
     "active": "Writing to stdout..."
   },
-  "expose": ["process"],
+  "expose": [
+    "process"
+  ],
   "ports": {
     "input": {
       "in": {
@@ -14,7 +16,6 @@
         "type": "any"
       }
     },
-    "output": {
-    }
+    "output": {}
   }
 }

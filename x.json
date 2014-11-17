@@ -12,6 +12,11 @@
   },
   "nodes": [
     {
+      "dependencies": {
+        "npm": {
+          "base64-stream": "0.x.x"
+        }
+      },
       "ports": {
         "input": {
           "stream": {
@@ -26,9 +31,6 @@
             "type": "Stream"
           }
         }
-      },
-      "require": {
-        "base64-stream": "0.x.x"
       },
       "phrases": {
         "active": "Decoding base64..."
@@ -39,6 +41,11 @@
       "fn": "output.stream = input.stream.pipe(base64_stream.encode());\n"
     },
     {
+      "dependencies": {
+        "npm": {
+          "base64-stream": "0.x.x"
+        }
+      },
       "ports": {
         "input": {
           "stream": {
@@ -53,9 +60,6 @@
             "type": "Stream"
           }
         }
-      },
-      "require": {
-        "base64-stream": "0.x.x"
       },
       "phrases": {
         "active": "Encoding to base64..."
@@ -66,6 +70,11 @@
       "fn": "output.stream = input.stream.pipe(base64_stream.encode());\n"
     },
     {
+      "dependencies": {
+        "npm": {
+          "zlib": "builtin"
+        }
+      },
       "ports": {
         "input": {
           "stream": {
@@ -80,9 +89,6 @@
             "type": "Stream"
           }
         }
-      },
-      "require": {
-        "zlib": "builtin"
       },
       "phrases": {
         "active": "Deflating..."
@@ -93,6 +99,11 @@
       "fn": "output.stream = input.stream.pipe(zlib.createDeflate());\n"
     },
     {
+      "dependencies": {
+        "npm": {
+          "zlib": "builtin"
+        }
+      },
       "ports": {
         "input": {
           "stream": {
@@ -107,9 +118,6 @@
             "type": "Stream"
           }
         }
-      },
-      "require": {
-        "zlib": "builtin"
       },
       "phrases": {
         "active": "Gunzipping..."
@@ -120,6 +128,11 @@
       "fn": "output.stream = input.stream.pipe(zlib.createGunzip());\n"
     },
     {
+      "dependencies": {
+        "npm": {
+          "zlib": "builtin"
+        }
+      },
       "ports": {
         "input": {
           "stream": {
@@ -134,9 +147,6 @@
             "type": "Stream"
           }
         }
-      },
-      "require": {
-        "zlib": "builtin"
       },
       "phrases": {
         "active": "Gzipping..."
@@ -147,6 +157,11 @@
       "fn": "output.stream = input.stream.pipe(zlib.createGzip());\n"
     },
     {
+      "dependencies": {
+        "npm": {
+          "zlib": "builtin"
+        }
+      },
       "ports": {
         "input": {
           "stream": {
@@ -161,9 +176,6 @@
             "type": "Stream"
           }
         }
-      },
-      "require": {
-        "zlib": "builtin"
       },
       "phrases": {
         "active": "Inflating..."
@@ -257,6 +269,11 @@
       "fn": "output = function(cb) {\n  input.stream.on('end', function(chunk) {\n\n    cb({ out: chunk } );\n\n    done();\n\n  });\n};\n"
     },
     {
+      "dependencies": {
+        "npm": {
+          "pipette": "0.x.x"
+        }
+      },
       "ports": {
         "input": {
           "stream": {
@@ -275,9 +292,6 @@
             "type": "string"
           }
         }
-      },
-      "require": {
-        "pipette": "0.x.x"
       },
       "phrases": {
         "active": "Sinking in"
@@ -359,6 +373,11 @@
       "fn": "on.input.in = function() {\n  process.stdout.write(data);\n};\n"
     },
     {
+      "dependencies": {
+        "npm": {
+          "zlib": "builtin"
+        }
+      },
       "ports": {
         "input": {
           "stream": {
@@ -373,9 +392,6 @@
             "type": "Stream"
           }
         }
-      },
-      "require": {
-        "zlib": "builtin"
       },
       "phrases": {
         "active": "Unzipping..."

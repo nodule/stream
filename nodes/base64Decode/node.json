@@ -5,9 +5,6 @@
   "phrases": {
     "active": "Decoding base64..."
   },
-  "require": {
-    "base64-stream": "0.x.x"
-  },
   "ports": {
     "input": {
       "stream": {
@@ -21,6 +18,11 @@
         "title": "Stream",
         "type": "Stream"
       }
+    }
+  },
+  "dependencies": {
+    "npm": {
+      "base64-stream": "0.x.x"
     }
   }
 }

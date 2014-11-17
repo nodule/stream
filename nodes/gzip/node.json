@@ -5,9 +5,6 @@
   "phrases": {
     "active": "Gzipping..."
   },
-  "require": {
-    "zlib": "builtin"
-  },
   "ports": {
     "input": {
       "stream": {
@@ -21,6 +18,11 @@
         "title": "Stream",
         "type": "Stream"
       }
+    }
+  },
+  "dependencies": {
+    "npm": {
+      "zlib": "builtin"
     }
   }
 }

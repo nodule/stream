@@ -5,7 +5,9 @@
   "phrases": {
     "active": "Reading stdin..."
   },
-  "expose": ["process"],
+  "expose": [
+    "process"
+  ],
   "ports": {
     "input": {
       "encoding": {
