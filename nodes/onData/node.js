@@ -7,17 +7,15 @@ output = function(cb) {
   var g = chi.group();
 
   $.stream.on('data', function(chunk) {
-
     cb({
-      out: chunk
+      out: $.create(chunk)
     }, g.item());
-
   });
 
   $.stream.on('end', function(chunk) {
 
     if(chunk) {// not sure if needed
-      cb({ out: chunk }, g.item());
+      cb({ out: $.create(chunk) }, g.item());
     }
 
     g.done();

@@ -1,1 +1,1 @@
-output.stream = $.stream.pipe(base64_stream.encode());
+output.stream = $.create($.stream.pipe(base64_stream.encode()));

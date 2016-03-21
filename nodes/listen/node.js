@@ -1,12 +1,12 @@
 output = function(cb) {
 
-  cb( { stream: $.stream } );
+  cb( { stream: $.get('stream') } );
 
   $.stream.on('data', function(val) {
-    cb({ out: val });
+    cb({ out: $.create(val) });
   });
 
   $.stream.on('error', function(err) {
-    cb({ error: err });
+    cb({ error: $.create(err) });
   });
 };

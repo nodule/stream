@@ -1,1 +1,1 @@
-output.stream = $.stream.pipe(zlib.createUnzip());
+output.stream = $.create($.stream.pipe(zlib.createUnzip()))
