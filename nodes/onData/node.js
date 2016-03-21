@@ -6,7 +6,7 @@ output = function(cb) {
   // ongoing stream..
   var g = chi.group();
 
-  input.stream.on('data', function(chunk) {
+  $.stream.on('data', function(chunk) {
 
     cb({
       out: chunk
@@ -14,7 +14,7 @@ output = function(cb) {
 
   });
 
-  input.stream.on('end', function(chunk) {
+  $.stream.on('end', function(chunk) {
 
     if(chunk) {// not sure if needed
       cb({ out: chunk }, g.item());

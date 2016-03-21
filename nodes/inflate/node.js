@@ -1,1 +1,1 @@
-output.stream = input.stream.pipe(zlib.createInflate());
+output.stream = $.stream.pipe(zlib.createInflate());

@@ -1,1 +1,1 @@
-output.stream = input.stream.pipe(zlib.createGunzip());
+output.stream = $.stream.pipe(zlib.createGunzip());

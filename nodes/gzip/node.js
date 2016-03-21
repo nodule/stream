@@ -1,1 +1,1 @@
-output.stream = input.stream.pipe(zlib.createGzip());
+output.stream = $.stream.pipe(zlib.createGzip());

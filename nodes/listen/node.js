@@ -1,12 +1,12 @@
 output = function(cb) {
 
-  cb( { stream: input.stream } );
+  cb( { stream: $.stream } );
 
-  input.stream.on('data', function(val) {
+  $.stream.on('data', function(val) {
     cb({ out: val });
   });
 
-  input.stream.on('error', function(err) {
+  $.stream.on('error', function(err) {
     cb({ error: err });
   });
 };

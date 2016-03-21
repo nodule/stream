@@ -1,3 +1,3 @@
 on.input.in = function() {
-  process.stderr.write(input.in);
+  process.stderr.write($.in);
 };
