@@ -25,9 +25,9 @@ module.exports = {
       "base64-stream": require('base64-stream')
     }
   },
-  fn: function base64Encode(input, output, state, done, cb, on, base64_stream) {
+  fn: function base64Encode(input, $, output, state, done, cb, on, base64_stream) {
     var r = function() {
-      output.stream = input.stream.pipe(base64_stream.encode());
+      output.stream = $.create($.stream.pipe(base64_stream.encode()));
     }.call(this);
     return {
       output: output,

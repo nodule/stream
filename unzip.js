@@ -25,9 +25,9 @@ module.exports = {
       zlib: require('zlib')
     }
   },
-  fn: function unzip(input, output, state, done, cb, on, zlib) {
+  fn: function unzip(input, $, output, state, done, cb, on, zlib) {
     var r = function() {
-      output.stream = input.stream.pipe(zlib.createUnzip());
+      output.stream = $.create($.stream.pipe(zlib.createUnzip()))
     }.call(this);
     return {
       output: output,

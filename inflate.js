@@ -25,9 +25,9 @@ module.exports = {
       zlib: require('zlib')
     }
   },
-  fn: function inflate(input, output, state, done, cb, on, zlib) {
+  fn: function inflate(input, $, output, state, done, cb, on, zlib) {
     var r = function() {
-      output.stream = input.stream.pipe(zlib.createInflate());
+      output.stream = $.create($.stream.pipe(zlib.createInflate()));
     }.call(this);
     return {
       output: output,

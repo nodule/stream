@@ -25,9 +25,9 @@ module.exports = {
       zlib: require('zlib')
     }
   },
-  fn: function deflate(input, output, state, done, cb, on, zlib) {
+  fn: function deflate(input, $, output, state, done, cb, on, zlib) {
     var r = function() {
-      output.stream = input.stream.pipe(zlib.createDeflate());
+      output.stream = $.create($.stream.pipe(zlib.createDeflate()));
     }.call(this);
     return {
       output: output,

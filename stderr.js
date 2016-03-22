@@ -14,7 +14,7 @@ module.exports = {
         type: "any",
         fn: function __IN__(data, x, source, state, input, output, process) {
           var r = function() {
-            process.stderr.write(data);
+            process.stderr.write($.in);
           }.call(this);
           return {
             state: state,

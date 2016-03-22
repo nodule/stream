@@ -25,9 +25,9 @@ module.exports = {
       zlib: require('zlib')
     }
   },
-  fn: function gunzip(input, output, state, done, cb, on, zlib) {
+  fn: function gunzip(input, $, output, state, done, cb, on, zlib) {
     var r = function() {
-      output.stream = input.stream.pipe(zlib.createGunzip());
+      output.stream = $.create($.stream.pipe(zlib.createGunzip()));
     }.call(this);
     return {
       output: output,

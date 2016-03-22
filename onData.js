@@ -21,7 +21,7 @@ module.exports = {
       }
     }
   },
-  fn: function onData(input, output, state, done, cb, on, chi) {
+  fn: function onData(input, $, output, state, done, cb, on, chi) {
     var r = function() {
       // just an anonymous group now
       // can just be collect with >=
@@ -30,19 +30,17 @@ module.exports = {
       // ongoing stream..
       var g = chi.group();
 
-      input.stream.on('data', function(chunk) {
-
+      $.stream.on('data', function(chunk) {
         output({
-          out: chunk
+          out: $.create(chunk)
         }, g.item());
-
       });
 
-      input.stream.on('end', function(chunk) {
+      $.stream.on('end', function(chunk) {
 
         if (chunk) { // not sure if needed
           output({
-            out: chunk
+            out: $.create(chunk)
           }, g.item());
         }
 

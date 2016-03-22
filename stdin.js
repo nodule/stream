@@ -21,12 +21,12 @@ module.exports = {
       }
     }
   },
-  fn: function stdin(input, output, state, done, cb, on, process) {
+  fn: function stdin(input, $, output, state, done, cb, on, process) {
     var r = function() {
       // test
       process.stdin.resume();
-      process.stdin.setEncoding(input.encoding);
-      output.stream = process.stdin;
+      process.stdin.setEncoding($.encoding);
+      output.stream = $.create(process.stdin);
     }.call(this);
     return {
       output: output,

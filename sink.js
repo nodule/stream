@@ -29,18 +29,18 @@ module.exports = {
       pipette: require('pipette')
     }
   },
-  fn: function sink(input, output, state, done, cb, on, pipette) {
+  fn: function sink(input, $, output, state, done, cb, on, pipette) {
     var r = function() {
-      var sink = new pipette.Sink(input.stream);
-      sink.on('data', function(data) {
+      var sink = new pipette.Sink($.stream);
+      sink.on('data', function(val) {
         output({
-          out: data.toString()
+          out: $.create(val.toString())
         });
       });
 
       sink.on('error', function(err) {
         output({
-          error: err
+          error: $.create(err)
         });
       });
     }.call(this);

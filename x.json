@@ -38,7 +38,7 @@
       "description": "Base64 decode stream",
       "ns": "stream",
       "name": "base64Decode",
-      "fn": "output.stream = input.stream.pipe(base64_stream.encode());\n"
+      "fn": "output.stream = $.create($.stream.pipe(base64_stream.encode()));\n"
     },
     {
       "dependencies": {
@@ -67,7 +67,7 @@
       "description": "Base64 encode stream",
       "ns": "stream",
       "name": "base64Encode",
-      "fn": "output.stream = input.stream.pipe(base64_stream.encode());\n"
+      "fn": "output.stream = $.create($.stream.pipe(base64_stream.encode()));\n"
     },
     {
       "dependencies": {
@@ -96,7 +96,7 @@
       "description": "Deflate pipe",
       "ns": "stream",
       "name": "deflate",
-      "fn": "output.stream = input.stream.pipe(zlib.createDeflate());\n"
+      "fn": "output.stream = $.create($.stream.pipe(zlib.createDeflate()));\n"
     },
     {
       "dependencies": {
@@ -125,7 +125,7 @@
       "description": "Gunzip pipe",
       "ns": "stream",
       "name": "gunzip",
-      "fn": "output.stream = input.stream.pipe(zlib.createGunzip());\n"
+      "fn": "output.stream = $.create($.stream.pipe(zlib.createGunzip()));\n"
     },
     {
       "dependencies": {
@@ -154,7 +154,7 @@
       "description": "Gzip pipe",
       "ns": "stream",
       "name": "gzip",
-      "fn": "output.stream = input.stream.pipe(zlib.createGzip());\n"
+      "fn": "output.stream = $.create($.stream.pipe(zlib.createGzip()));\n"
     },
     {
       "dependencies": {
@@ -183,7 +183,7 @@
       "description": "Inflate pipe",
       "ns": "stream",
       "name": "inflate",
-      "fn": "output.stream = input.stream.pipe(zlib.createInflate());\n"
+      "fn": "output.stream = $.create($.stream.pipe(zlib.createInflate()));\n"
     },
     {
       "ports": {
@@ -215,7 +215,7 @@
       "description": "Listens for stream data.",
       "ns": "stream",
       "name": "listen",
-      "fn": "output = function(cb) {\n\n  cb( { stream: input.stream } );\n\n  input.stream.on('data', function(data) {\n    cb({ out: data });\n  });\n\n  input.stream.on('error', function(err) {\n    cb({ error: err });\n  });\n};\n"
+      "fn": "output = function(cb) {\n\n  cb( { stream: $.get('stream') } );\n\n  $.stream.on('data', function(val) {\n    cb({ out: $.create(val) });\n  });\n\n  $.stream.on('error', function(err) {\n    cb({ error: $.create(err) });\n  });\n};\n"
     },
     {
       "ports": {
@@ -242,7 +242,7 @@
       "description": "On Data",
       "ns": "stream",
       "name": "onData",
-      "fn": "output = function(cb) {\n  // just an anonymous group now\n  // can just be collect with >=\n  // TODO: sometimes the grouping behavior is wanted\n  // sometimes not, we do not want to group an\n  // ongoing stream..\n  var g = chi.group();\n\n  input.stream.on('data', function(chunk) {\n\n    cb({\n      out: chunk\n    }, g.item());\n\n  });\n\n  input.stream.on('end', function(chunk) {\n\n    if(chunk) {// not sure if needed\n      cb({ out: chunk }, g.item());\n    }\n\n    g.done();\n    done(); // triggers complete.\n  });\n};\n"
+      "fn": "output = function(cb) {\n  // just an anonymous group now\n  // can just be collect with >=\n  // TODO: sometimes the grouping behavior is wanted\n  // sometimes not, we do not want to group an\n  // ongoing stream..\n  var g = chi.group();\n\n  $.stream.on('data', function(chunk) {\n    cb({\n      out: $.create(chunk)\n    }, g.item());\n  });\n\n  $.stream.on('end', function(chunk) {\n\n    if(chunk) {// not sure if needed\n      cb({ out: $.create(chunk) }, g.item());\n    }\n\n    g.done();\n    done(); // triggers complete.\n  });\n};\n"
     },
     {
       "ports": {
@@ -266,7 +266,7 @@
       "description": "On End",
       "ns": "stream",
       "name": "onEnd",
-      "fn": "output = function(cb) {\n  input.stream.on('end', function(chunk) {\n\n    cb({ out: chunk } );\n\n    done();\n\n  });\n};\n"
+      "fn": "output = function(cb) {\n  $.stream.on('end', function(chunk) {\n    cb({ out: $.create(chunk) } );\n    done();\n  });\n};\n"
     },
     {
       "dependencies": {
@@ -299,7 +299,7 @@
       "description": "Accepts a stream and converts it back into a string.",
       "ns": "stream",
       "name": "sink",
-      "fn": "output = function(cb) {\n\n  var sink = new pipette.Sink(input.stream);\n  sink.on('data', function(data) {\n    cb({ out: data.toString() });\n  });\n\n  sink.on('error', function(err) {\n    cb({ error: err });\n  });\n};\n"
+      "fn": "output = function(cb) {\n  var sink = new pipette.Sink($.stream);\n  sink.on('data', function(val) {\n    cb({ out: $.create(val.toString()) });\n  });\n\n  sink.on('error', function(err) {\n    cb({ error: $.create(err) });\n  });\n};\n"
     },
     {
       "ports": {
@@ -321,7 +321,7 @@
       "description": "Write for stderr",
       "ns": "stream",
       "name": "stderr",
-      "fn": "on.input.in = function() {\n  process.stderr.write(data);\n};\n"
+      "fn": "on.input.in = function() {\n  process.stderr.write($.in);\n};\n"
     },
     {
       "ports": {
@@ -348,7 +348,7 @@
       "description": "Read for stdin",
       "ns": "stream",
       "name": "stdin",
-      "fn": "// test\nprocess.stdin.resume();\nprocess.stdin.setEncoding(input.encoding);\noutput.stream = process.stdin;\n"
+      "fn": "// test\nprocess.stdin.resume();\nprocess.stdin.setEncoding($.encoding);\noutput.stream = $.create(process.stdin);\n"
     },
     {
       "ports": {
@@ -370,7 +370,7 @@
       "description": "Write for stdin",
       "ns": "stream",
       "name": "stdout",
-      "fn": "on.input.in = function() {\n  process.stdout.write(data);\n};\n"
+      "fn": "on.input.in = function() {\n  process.stdout.write($.in);\n};\n"
     },
     {
       "dependencies": {
@@ -399,7 +399,7 @@
       "description": "Unzip pipe",
       "ns": "stream",
       "name": "unzip",
-      "fn": "output.stream = input.stream.pipe(zlib.createUnzip());\n"
+      "fn": "output.stream = $.create($.stream.pipe(zlib.createUnzip()))\n"
     }
   ],
   "twigs": []

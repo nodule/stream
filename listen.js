@@ -28,21 +28,21 @@ module.exports = {
       }
     }
   },
-  fn: function listen(input, output, state, done, cb, on) {
+  fn: function listen(input, $, output, state, done, cb, on) {
     var r = function() {
       output({
-        stream: input.stream
+        stream: $.get('stream')
       });
 
-      input.stream.on('data', function(data) {
+      $.stream.on('data', function(val) {
         output({
-          out: data
+          out: $.create(val)
         });
       });
 
-      input.stream.on('error', function(err) {
+      $.stream.on('error', function(err) {
         output({
-          error: err
+          error: $.create(err)
         });
       });
     }.call(this);

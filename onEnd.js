@@ -20,16 +20,13 @@ module.exports = {
       }
     }
   },
-  fn: function onEnd(input, output, state, done, cb, on) {
+  fn: function onEnd(input, $, output, state, done, cb, on) {
     var r = function() {
-      input.stream.on('end', function(chunk) {
-
+      $.stream.on('end', function(chunk) {
         output({
-          out: chunk
+          out: $.create(chunk)
         });
-
         done();
-
       });
     }.call(this);
     return {
