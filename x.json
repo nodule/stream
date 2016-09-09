@@ -12,68 +12,40 @@
   },
   "nodes": [
     {
-      "dependencies": {
-        "npm": {
-          "base64-stream": "0.x.x"
-        }
-      },
-      "ports": {
-        "input": {
-          "stream": {
-            "title": "Stream",
-            "type": "Stream",
-            "required": true
-          }
-        },
-        "output": {
-          "stream": {
-            "title": "Stream",
-            "type": "Stream"
-          }
-        }
-      },
+      "name": "base64Decode",
+      "ns": "stream",
+      "description": "Base64 decode stream",
       "phrases": {
         "active": "Decoding base64..."
       },
-      "description": "Base64 decode stream",
-      "ns": "stream",
-      "name": "base64Decode",
-      "fn": "output.stream = $.create($.stream.pipe(base64_stream.encode()));\n"
-    },
-    {
+      "ports": {
+        "input": {
+          "stream": {
+            "title": "Stream",
+            "type": "Stream",
+            "required": true
+          }
+        },
+        "output": {
+          "stream": {
+            "title": "Stream",
+            "type": "Stream"
+          }
+        }
+      },
       "dependencies": {
         "npm": {
           "base64-stream": "0.x.x"
         }
       },
-      "ports": {
-        "input": {
-          "stream": {
-            "title": "Stream",
-            "type": "Stream",
-            "required": true
-          }
-        },
-        "output": {
-          "stream": {
-            "title": "Stream",
-            "type": "Stream"
-          }
-        }
-      },
-      "phrases": {
-        "active": "Encoding to base64..."
-      },
-      "description": "Base64 encode stream",
-      "ns": "stream",
-      "name": "base64Encode",
       "fn": "output.stream = $.create($.stream.pipe(base64_stream.encode()));\n"
     },
     {
-      "dependencies": {
-        "npm": {
-          "zlib": "builtin"
-        }
+      "name": "base64Encode",
+      "ns": "stream",
+      "description": "Base64 encode stream",
+      "phrases": {
+        "active": "Encoding to base64..."
       },
       "ports": {
         "input": {
@@ -90,77 +62,106 @@
           }
         }
       },
+      "dependencies": {
+        "npm": {
+          "base64-stream": "0.x.x"
+        }
+      },
+      "fn": "output.stream = $.create($.stream.pipe(base64_stream.encode()));\n"
+    },
+    {
+      "name": "deflate",
+      "ns": "stream",
+      "description": "Deflate pipe",
       "phrases": {
         "active": "Deflating..."
       },
-      "description": "Deflate pipe",
-      "ns": "stream",
-      "name": "deflate",
+      "ports": {
+        "input": {
+          "stream": {
+            "title": "Stream",
+            "type": "Stream",
+            "required": true
+          }
+        },
+        "output": {
+          "stream": {
+            "title": "Stream",
+            "type": "Stream"
+          }
+        }
+      },
+      "dependencies": {
+        "npm": {
+          "zlib": "builtin"
+        }
+      },
       "fn": "output.stream = $.create($.stream.pipe(zlib.createDeflate()));\n"
     },
     {
-      "dependencies": {
-        "npm": {
-          "zlib": "builtin"
-        }
-      },
-      "ports": {
-        "input": {
-          "stream": {
-            "title": "Stream",
-            "type": "Stream",
-            "required": true
-          }
-        },
-        "output": {
-          "stream": {
-            "title": "Stream",
-            "type": "Stream"
-          }
-        }
-      },
+      "name": "gunzip",
+      "ns": "stream",
+      "description": "Gunzip pipe",
       "phrases": {
         "active": "Gunzipping..."
       },
-      "description": "Gunzip pipe",
-      "ns": "stream",
-      "name": "gunzip",
+      "ports": {
+        "input": {
+          "stream": {
+            "title": "Stream",
+            "type": "Stream",
+            "required": true
+          }
+        },
+        "output": {
+          "stream": {
+            "title": "Stream",
+            "type": "Stream"
+          }
+        }
+      },
+      "dependencies": {
+        "npm": {
+          "zlib": "builtin"
+        }
+      },
       "fn": "output.stream = $.create($.stream.pipe(zlib.createGunzip()));\n"
     },
     {
-      "dependencies": {
-        "npm": {
-          "zlib": "builtin"
-        }
-      },
-      "ports": {
-        "input": {
-          "stream": {
-            "title": "Stream",
-            "type": "Stream",
-            "required": true
-          }
-        },
-        "output": {
-          "stream": {
-            "title": "Stream",
-            "type": "Stream"
-          }
-        }
-      },
+      "name": "gzip",
+      "ns": "stream",
+      "description": "Gzip pipe",
       "phrases": {
         "active": "Gzipping..."
       },
-      "description": "Gzip pipe",
-      "ns": "stream",
-      "name": "gzip",
-      "fn": "output.stream = $.create($.stream.pipe(zlib.createGzip()));\n"
-    },
-    {
+      "ports": {
+        "input": {
+          "stream": {
+            "title": "Stream",
+            "type": "Stream",
+            "required": true
+          }
+        },
+        "output": {
+          "stream": {
+            "title": "Stream",
+            "type": "Stream"
+          }
+        }
+      },
       "dependencies": {
         "npm": {
           "zlib": "builtin"
         }
+      },
+      "fn": "output.stream = $.create($.stream.pipe(zlib.createGzip()));\n"
+    },
+    {
+      "name": "inflate",
+      "ns": "stream",
+      "description": "Inflate pipe",
+      "phrases": {
+        "active": "Inflating..."
       },
       "ports": {
         "input": {
@@ -177,15 +178,20 @@
           }
         }
       },
-      "phrases": {
-        "active": "Inflating..."
+      "dependencies": {
+        "npm": {
+          "zlib": "builtin"
+        }
       },
-      "description": "Inflate pipe",
-      "ns": "stream",
-      "name": "inflate",
       "fn": "output.stream = $.create($.stream.pipe(zlib.createInflate()));\n"
     },
     {
+      "name": "listen",
+      "ns": "stream",
+      "description": "Listens for stream data.",
+      "phrases": {
+        "active": "Listening to stream"
+      },
       "ports": {
         "input": {
           "stream": {
@@ -209,42 +215,18 @@
           }
         }
       },
-      "phrases": {
-        "active": "Listening to stream"
-      },
-      "description": "Listens for stream data.",
-      "ns": "stream",
-      "name": "listen",
       "fn": "output = function(cb) {\n\n  cb( { stream: $.get('stream') } );\n\n  $.stream.on('data', function(val) {\n    cb({ out: $.create(val) });\n  });\n\n  $.stream.on('error', function(err) {\n    cb({ error: $.create(err) });\n  });\n};\n"
     },
     {
-      "ports": {
-        "input": {
-          "stream": {
-            "title": "Stream",
-            "type": "Stream",
-            "required": true
-          }
-        },
-        "output": {
-          "out": {
-            "title": "Output",
-            "type": "any"
-          }
-        }
+      "name": "onData",
+      "ns": "stream",
+      "description": "On Data",
+      "phrases": {
+        "active": "Doing on data..."
       },
       "expose": [
         "chi"
       ],
-      "phrases": {
-        "active": "Doing on data..."
-      },
-      "description": "On Data",
-      "ns": "stream",
-      "name": "onData",
-      "fn": "output = function(cb) {\n  // just an anonymous group now\n  // can just be collect with >=\n  // TODO: sometimes the grouping behavior is wanted\n  // sometimes not, we do not want to group an\n  // ongoing stream..\n  var g = chi.group();\n\n  $.stream.on('data', function(chunk) {\n    cb({\n      out: $.create(chunk)\n    }, g.item());\n  });\n\n  $.stream.on('end', function(chunk) {\n\n    if(chunk) {// not sure if needed\n      cb({ out: $.create(chunk) }, g.item());\n    }\n\n    g.done();\n    done(); // triggers complete.\n  });\n};\n"
-    },
-    {
       "ports": {
         "input": {
           "stream": {
@@ -260,19 +242,38 @@
           }
         }
       },
+      "fn": "output = function(cb) {\n  // just an anonymous group now\n  // can just be collect with >=\n  // TODO: sometimes the grouping behavior is wanted\n  // sometimes not, we do not want to group an\n  // ongoing stream..\n  var g = chi.group();\n\n  $.stream.on('data', function(chunk) {\n    cb({\n      out: $.create(chunk)\n    }, g.item());\n  });\n\n  $.stream.on('end', function(chunk) {\n\n    if(chunk) {// not sure if needed\n      cb({ out: $.create(chunk) }, g.item());\n    }\n\n    g.done();\n    done(); // triggers complete.\n  });\n};\n"
+    },
+    {
+      "name": "onEnd",
+      "ns": "stream",
+      "description": "On End",
       "phrases": {
         "active": "Stream is ending..."
       },
-      "description": "On End",
-      "ns": "stream",
-      "name": "onEnd",
+      "ports": {
+        "input": {
+          "stream": {
+            "title": "Stream",
+            "type": "Stream",
+            "required": true
+          }
+        },
+        "output": {
+          "out": {
+            "title": "Output",
+            "type": "any"
+          }
+        }
+      },
       "fn": "output = function(cb) {\n  $.stream.on('end', function(chunk) {\n    cb({ out: $.create(chunk) } );\n    done();\n  });\n};\n"
     },
     {
-      "dependencies": {
-        "npm": {
-          "pipette": "0.x.x"
-        }
+      "name": "sink",
+      "ns": "stream",
+      "description": "Accepts a stream and converts it back into a string.",
+      "phrases": {
+        "active": "Sinking in"
       },
       "ports": {
         "input": {
@@ -293,15 +294,24 @@
           }
         }
       },
-      "phrases": {
-        "active": "Sinking in"
+      "dependencies": {
+        "npm": {
+          "pipette": "0.x.x"
+        }
       },
-      "description": "Accepts a stream and converts it back into a string.",
-      "ns": "stream",
-      "name": "sink",
       "fn": "output = function(cb) {\n  var sink = new pipette.Sink($.stream);\n  sink.on('data', function(val) {\n    cb({ out: $.create(val.toString()) });\n  });\n\n  sink.on('error', function(err) {\n    cb({ error: $.create(err) });\n  });\n};\n"
     },
     {
+      "name": "stderr",
+      "ns": "stream",
+      "description": "Write for stderr",
+      "async": true,
+      "phrases": {
+        "active": "Writing to stderr"
+      },
+      "expose": [
+        "process"
+      ],
       "ports": {
         "input": {
           "in": {
@@ -311,19 +321,18 @@
         },
         "output": {}
       },
-      "expose": [
-        "process"
-      ],
-      "phrases": {
-        "active": "Writing to stderr"
-      },
-      "async": true,
-      "description": "Write for stderr",
-      "ns": "stream",
-      "name": "stderr",
       "fn": "on.input.in = function() {\n  process.stderr.write($.in);\n};\n"
     },
     {
+      "name": "stdin",
+      "ns": "stream",
+      "description": "Read for stdin",
+      "phrases": {
+        "active": "Reading stdin..."
+      },
+      "expose": [
+        "process"
+      ],
       "ports": {
         "input": {
           "encoding": {
@@ -339,18 +348,19 @@
           }
         }
       },
-      "expose": [
-        "process"
-      ],
-      "phrases": {
-        "active": "Reading stdin..."
-      },
-      "description": "Read for stdin",
-      "ns": "stream",
-      "name": "stdin",
       "fn": "// test\nprocess.stdin.resume();\nprocess.stdin.setEncoding($.encoding);\noutput.stream = $.create(process.stdin);\n"
     },
     {
+      "name": "stdout",
+      "ns": "stream",
+      "description": "Write for stdin",
+      "async": true,
+      "phrases": {
+        "active": "Writing to stdout..."
+      },
+      "expose": [
+        "process"
+      ],
       "ports": {
         "input": {
           "in": {
@@ -360,23 +370,14 @@
         },
         "output": {}
       },
-      "expose": [
-        "process"
-      ],
-      "phrases": {
-        "active": "Writing to stdout..."
-      },
-      "async": true,
-      "description": "Write for stdin",
-      "ns": "stream",
-      "name": "stdout",
       "fn": "on.input.in = function() {\n  process.stdout.write($.in);\n};\n"
     },
     {
-      "dependencies": {
-        "npm": {
-          "zlib": "builtin"
-        }
+      "name": "unzip",
+      "ns": "stream",
+      "description": "Unzip pipe",
+      "phrases": {
+        "active": "Unzipping..."
       },
       "ports": {
         "input": {
@@ -393,14 +394,12 @@
           }
         }
       },
-      "phrases": {
-        "active": "Unzipping..."
+      "dependencies": {
+        "npm": {
+          "zlib": "builtin"
+        }
       },
-      "description": "Unzip pipe",
-      "ns": "stream",
-      "name": "unzip",
       "fn": "output.stream = $.create($.stream.pipe(zlib.createUnzip()))\n"
     }
-  ],
-  "twigs": []
+  ]
 }
